@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "log_decor"
+version = "0.0.1"
+description = "Logging decorators for classes and methods."
+authors = [
+    "Bernardo Paulsen <bernardopaulsen@gmail.com>"
+]
+license = "MIT"
+
+readme = "README.md"
+
+packages = [
+    { include = "log_decor" },
+]
+
+homepage = ""
+repository = "https://github.com/bernardopaulsen/log_decor"
+documentation = ""
+
+keywords = ["logging", "decorators", "OOP"]
+
+[tool.poetry.build]
+generate-setup-file = false
+
+[tool.poetry.dependencies]
+python = "^3.10"

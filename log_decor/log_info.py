@@ -6,8 +6,10 @@ import typing as tp
 
 if sys.version_info < (3, 10):
     from typing_extensions import Concatenate, ParamSpec
+    Tuple = tp.Tuple
 else:
     from typing import Concatenate, ParamSpec
+    Tuple = tuple
 
 
 class Class:
@@ -23,7 +25,7 @@ def get_duration(func: Method,
                  self_: tp.Type[Class],
                  *args,
                  **kwargs
-                 ) -> tuple[float, RetType]:
+                 ) -> Tuple[float, RetType]:
     """Execute a method and return a tuple with the time duration of execution
     and return value.
 

@@ -1,5 +1,9 @@
 # Python
 __pycache__/
+*.egg*
+
+# Poetry
+poetry.lock
 
 # Pycharm
 .idea/

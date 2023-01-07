@@ -5,9 +5,9 @@ import time
 import typing as tp
 
 if sys.version_info < (3, 10):
-    from typing_extensions import ParamSpec
+    from typing_extensions import Concatenate, ParamSpec
 else:
-    from typing import ParamSpec
+    from typing import Concatenate, ParamSpec
 
 
 class Class:
@@ -16,7 +16,7 @@ class Class:
 
 Param = ParamSpec("Param")
 RetType = tp.TypeVar("RetType")
-Method = tp.Callable[tp.Concatenate[tp.Type[Class], Param], RetType]
+Method = tp.Callable[Concatenate[tp.Type[Class], Param], RetType]
 
 
 def get_duration(func: Method,

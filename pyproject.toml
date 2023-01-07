@@ -1,25 +1,13 @@
 [tool.poetry]
 name = "log_decor"
+version = "1.0.0"
 description = "Logging decorators for classes and methods."
-authors = [
-    "Bernardo Paulsen <bernardopaulsen@gmail.com>"
-]
+authors = ["Bernardo Paulsen <bernardopaulsen@gmail.com>"]
 license = "MIT"
-
-readme = "README.md"
-
-packages = [
-    { include = "log_decor" },
-]
-
+readme = "README.rst"
+packages = [{ include = "src/log_decor" }]
 keywords = ["logging", "decorators", "OOP"]
 
 [tool.poetry.urls]
 "Github" = "https://github.com/bernardopaulsen/log_decor"
 "Read the Docs" = "https://test.pypi.org/project/log-decor/"
-
-[tool.poetry.build]
-generate-setup-file = false
-
-[tool.poetry.dependencies]
-python = "^3.10"

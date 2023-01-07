@@ -1,3 +1,4 @@
 sphinx>=5.3,<6.0
 sphinx_rtd_theme>=1.1,<1.2
 sphinx_autodoc_typehints>=1.20,<1.21
+typing_extensions

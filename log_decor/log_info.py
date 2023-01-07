@@ -1,14 +1,20 @@
 import functools
 import logging
+import sys
 import time
 import typing as tp
+
+if sys.version_info < (3, 10):
+    from typing_extensions import ParamSpec
+else:
+    from typing import ParamSpec
 
 
 class Class:
     logger: logging.Logger
 
 
-Param = tp.ParamSpec("Param")
+Param = ParamSpec("Param")
 RetType = tp.TypeVar("RetType")
 Method = tp.Callable[tp.Concatenate[tp.Type[Class], Param], RetType]
 

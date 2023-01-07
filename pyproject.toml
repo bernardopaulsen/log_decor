@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "log_decor"
-version = "1.0.0"
+version = "1.0.1"
 description = "Logging decorators for classes and methods."
 authors = ["Bernardo Paulsen <bernardopaulsen@gmail.com>"]
 license = "MIT"
@@ -10,4 +10,4 @@ keywords = ["logging", "decorators", "OOP"]
 
 [tool.poetry.urls]
 "Github" = "https://github.com/bernardopaulsen/log_decor"
-"Read the Docs" = "https://test.pypi.org/project/log-decor/"
+"Read the Docs" = "https://log-decor.readthedocs.io"

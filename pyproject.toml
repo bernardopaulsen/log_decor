@@ -1,6 +1,5 @@
 [tool.poetry]
 name = "log_decor"
-version = "0.0.1"
 description = "Logging decorators for classes and methods."
 authors = [
     "Bernardo Paulsen <bernardopaulsen@gmail.com>"
@@ -13,11 +12,11 @@ packages = [
     { include = "log_decor" },
 ]
 
-homepage = ""
-repository = "https://github.com/bernardopaulsen/log_decor"
-documentation = ""
-
 keywords = ["logging", "decorators", "OOP"]
+
+[tool.poetry.urls]
+"Github" = "https://github.com/bernardopaulsen/log_decor"
+"Read the Docs" = "https://test.pypi.org/project/log-decor/"
 
 [tool.poetry.build]
 generate-setup-file = false

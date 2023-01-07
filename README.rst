@@ -1,2 +1,4 @@
-# log_decor
+log_decor
+=========
+
 Logging decorators for classes and methods.

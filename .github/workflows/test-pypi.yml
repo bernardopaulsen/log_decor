@@ -13,7 +13,6 @@ jobs:
     - name: Install poetry
       run: |
         curl -sSL https://install.python-poetry.org | python -
-        source $HOME/.poetry/env
     - name: Install dependencies
       run: poetry install
     - name: Build distribution

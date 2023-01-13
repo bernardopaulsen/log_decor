@@ -9,17 +9,16 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
       with:
-        python-version: "3.8"
-    - name: Install poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python -
+        python-version: '3.8'
     - name: Install dependencies
-      run: poetry install
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry
     - name: Build distribution
       run: |
-        poetry version $(git describe --tags)
+        poetry version $(git describe --tags --abbrev=0)
         poetry build
-    - name: Deploy to Test PyPI
+    - name: Publish to Test PyPI
       run: |
         poetry config repositories.test-pypi https://test.pypi.org/legacy/
         poetry config pypi-token.test-pypi ${{ secrets.PYPI_TOKEN }}

@@ -1,0 +1,31 @@
+name: "Release to Test PyPI"
+
+on:
+  push:
+#    branches:
+#      - "*"
+    tags:
+      - "*"
+
+jobs:
+  release-test-pypi:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python -
+        source $HOME/.poetry/env
+    - name: Install dependencies
+      run: poetry install
+    - name: Build distribution
+      run: |
+        poetry version $(echo ${{github.ref}} | sed 's/refs\/tags\///g')
+        poetry build
+    - name: Deploy to Test PyPI
+        poetry config repositories.test-pypi https://test.pypi.org/legacy/
+        poetry config pypi-token.test-pypi ${{ secrets.PYPI_TOKEN }}
+        poetry publish -r test-pypi

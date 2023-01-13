@@ -1,11 +1,6 @@
 name: "Release to Test PyPI"
 
-on:
-  push:
-#    branches:
-#      - "*"
-    tags:
-      - "*"
+on: push
 
 jobs:
   release-test-pypi:

@@ -9,7 +9,7 @@ packages = [{ include = "src/log_decor" }]
 keywords = ["logging", "decorators", "OOP"]
 
 [tool.poetry.dependencies]
-python = "ˆ3.8"
+python = "^3.8"
 typing_extensions = "^4.4"
 
 [tool.poetry.urls]

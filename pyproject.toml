@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "log_decor"
-version = "1.0.1"
+version = "0.0.0"
 description = "Logging decorators for classes and methods."
 authors = ["Bernardo Paulsen <bernardopaulsen@gmail.com>"]
 license = "MIT"

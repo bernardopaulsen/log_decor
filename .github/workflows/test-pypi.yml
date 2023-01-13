@@ -17,7 +17,7 @@ jobs:
       run: poetry install
     - name: Build distribution
       run: |
-        poetry version $(echo ${{github.ref}} | sed 's/refs\/tags\///g')
+        poetry version $(git describe --tags)
         poetry build
     - name: Deploy to Test PyPI
       run: |

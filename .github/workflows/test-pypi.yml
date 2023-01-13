@@ -21,6 +21,7 @@ jobs:
         poetry version $(echo ${{github.ref}} | sed 's/refs\/tags\///g')
         poetry build
     - name: Deploy to Test PyPI
+      run: |
         poetry config repositories.test-pypi https://test.pypi.org/legacy/
         poetry config pypi-token.test-pypi ${{ secrets.PYPI_TOKEN }}
         poetry publish -r test-pypi

@@ -16,7 +16,7 @@ jobs:
         pip install poetry
     - name: Build distribution
       run: |
-        poetry version $(git describe --tags --abbrev=0)
+        poetry self add 'poetry-dynamic-versioning[plugin]'
         poetry build
     - name: Publish to Test PyPI
       run: |

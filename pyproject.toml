@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "log_decor"
-version = "1.0.1"
+version = "0.0.0"
 description = "Logging decorators for classes and methods."
 authors = ["Bernardo Paulsen <bernardopaulsen@gmail.com>"]
 license = "MIT"
@@ -8,6 +8,19 @@ readme = "README.rst"
 packages = [{ include = "src/log_decor" }]
 keywords = ["logging", "decorators", "OOP"]
 
+[tool.poetry.dependencies]
+python = "^3.8"
+typing_extensions = "^4.4"
+
 [tool.poetry.urls]
 "Github" = "https://github.com/bernardopaulsen/log_decor"
 "Read the Docs" = "https://log-decor.readthedocs.io"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = 'git'
+format = '{base}'
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"

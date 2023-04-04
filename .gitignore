@@ -18,4 +18,4 @@ poetry.lock
 _build/
 
 # Virtual Environment
-venv/
+.venv/

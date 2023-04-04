@@ -1,16 +1,15 @@
 [tool.poetry]
 name = "log_decor"
-version = "0.0.0"
-description = "Logging decorators for classes and methods."
-authors = ["Bernardo Paulsen <bernardopaulsen@gmail.com>"]
+version = "0.1.0"
+description = "Logging decorators for functions and methods."
+authors = ["Bernardo Paulsen <paulsen.bernardo@gmail.com>"]
 license = "MIT"
 readme = "README.rst"
-packages = [{ include = "src/log_decor" }]
-keywords = ["logging", "decorators", "OOP"]
+packages = [{ include = "log_decor" }]
+keywords = ["logging", "decorator", "OOP"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-typing_extensions = "^4.4"
+python = "^3.10"
 
 [tool.poetry.urls]
 "Github" = "https://github.com/bernardopaulsen/log_decor"

@@ -14,7 +14,7 @@ Installation
 
 .. code-block::
 
-   pip install git+https://github.com/bernardopaulsen/log_decor.git
+   pip install log-decor
 
 
 .. toctree::

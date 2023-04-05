@@ -39,27 +39,6 @@ class LogMsgCases(WrapCases):
                           logged_msg='func()')
 
 
-class LogMsgMethodTests(TestCase, LogMsgCases):
-
-    def setUp(self) -> None:
-        self._func = A.func
-        self._self = A()
-
-    def execute_test(self,
-                     msg: str,
-                     level: int,
-                     args: tuple,
-                     kwargs: dict,
-                     logged_msg: str):
-        func = log_msg(msg, level)(self._func)
-        result = func(self._self, *args, **kwargs)
-        self.assertEqual(result, (args, kwargs))
-        self.assertEqual(
-            self._self.logger.kwargs,
-            dict(level=level, msg=logged_msg)
-        )
-
-
 class LogMsgFunctionTests(TestCase, LogMsgCases):
 
     def setUp(self) -> None:
@@ -79,3 +58,25 @@ class LogMsgFunctionTests(TestCase, LogMsgCases):
         self._logging_mock.assert_called_once_with(
             level=level,
             msg=logged_msg)
+        
+
+
+class LogMsgMethodTests(TestCase, LogMsgCases):
+
+    def setUp(self) -> None:
+        self._func = A.func
+        self._self = A()
+
+    def execute_test(self,
+                     msg: str,
+                     level: int,
+                     args: tuple,
+                     kwargs: dict,
+                     logged_msg: str):
+        func = log_msg(msg, level)(self._func)
+        result = func(self._self, *args, **kwargs)
+        self.assertEqual(result, (args, kwargs))
+        self.assertEqual(
+            self._self.logger.kwargs,
+            dict(level=level, msg=logged_msg)
+        )

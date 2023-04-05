@@ -27,3 +27,11 @@ Example
         @log_msg(level=logging.INFO)
         def f2(self):
             pass
+
+
+>>> logging.basicConfig(level=logging.DEBUG)
+>>> example = Example()
+>>> example.f1()
+DEBUG:Example:message
+>>> example.f2()
+INFO:Example:f2()

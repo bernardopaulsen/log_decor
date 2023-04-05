@@ -1,32 +1,57 @@
 Usage
 =====
 
+
+Add logging functionality to function
+-------------------------------------
+
+.. code-block:: python
+
+    from log_decor import log_info
+
+
+    # logs at DEBUG level
+    @log_info()
+    def f():
+        pass
+        
+
 Add logger to class
 -------------------
 
 .. code-block:: python
 
-   from log_decor import AddLogger
+    from log_decor import add_logger
 
 
-   @AddLogger()
-   class Example:
-       pass
+    # logger with name 'Exaxmple'
+    @add_logger()
+    class Example:
+        pass
+
+    # logger with name 'LoggerName'
+    @add_logger('LoggerName')
+    class Example:
+        pass
+
 
 Add logging functionality to method
 -----------------------------------
 
 .. code-block:: python
 
-   from log_decor import AddLogger, LogInfo
+    from log_decor import add_logger, log_info
 
 
-   @AddLogger()
-   class Example:
+    # logger with name 'Example'
+    @add_logger()
+    class Example:
 
-       @LogInfo()
-       def f(self):
-           pass
+        # logs at DEBUG level
+        @log_info()
+        def f(self):
+            pass
+
 
 Define logging configuration
 ----------------------------

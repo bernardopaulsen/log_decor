@@ -1,18 +1,18 @@
 API
 ===
 
-.. autoclass:: add_logger.AddLogger
+.. autoclass:: add.add_logger
    :members:
    :special-members: __call__
 
-.. autoclass:: log_info.LogInfo
+.. autoclass:: func.log_func
    :members:
    :special-members: __call__
 
-.. autoclass:: log_method.LogMethod
+.. autoclass:: info.log_info
    :members:
    :special-members: __call__
 
-.. autoclass:: log_msg.LogMsg
+.. autoclass:: msg.log_msg
    :members:
    :special-members: __call__

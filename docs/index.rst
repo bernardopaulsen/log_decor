@@ -6,15 +6,11 @@
 Welcome to log-decor's documentation!
 =====================================
 
-Introduction
-############
+This package contains decorators that provide logging functionality for functions
+and methods.
 
-This package has class and method decorators that provide logging functionality.
-
-Getting Started
-###############
-
-To install, execute the following command:
+Installation
+------------
 
 .. code-block::
 

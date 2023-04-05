@@ -21,7 +21,7 @@ jobs:
           pip install coverage
 
       - name: Run unit tests
-        run: coverage run -m unittest discover -s tests/
+        run: coverage run -m unittest discover
 
       - name: Generate coverage report
         run: coverage html

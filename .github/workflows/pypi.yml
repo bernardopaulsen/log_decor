@@ -2,8 +2,10 @@ name: "Release to Test PyPI"
 
 on:
   push:
-    # tags:
-    #   - v*
+    branches:
+      - main
+    tags:
+      - 'v*'
 
 jobs:
   release-test-pypi:

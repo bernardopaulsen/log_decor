@@ -21,10 +21,10 @@ jobs:
           pip install unittest-xml-reporting
 
       - name: Run unit tests
-        run: python -m xmlrunner --output-file test-report.xml
+        run: python -m xmlrunner -o test-results
 
-      - name: Upload report
-        uses: actions/upload-artifact@v2
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
-          name: report
-          path: test-report.xml
+          files: |
+            test-results/**.xml

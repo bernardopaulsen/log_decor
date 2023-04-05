@@ -13,6 +13,12 @@ Decorator = tp.Callable[[Class], tp.Type[Class]]
 
 def add_logger(name: str | None = None
                ) -> Decorator:
+    """Add logger to class.
+    
+    The logger will be saved in an attribute named 'logger'.
+
+    :param name: Name of logger. If not given, the name of the class is used.
+    """
     def decorator(cls: Class) -> tp.Type[Class]:
         @functools.wraps(cls, updated=())
         class Wrapper(cls):

@@ -73,6 +73,17 @@ def wrap_method(log_level: int,
 
 def log_info(level: int | None = logging.DEBUG
              ) -> Decorator:
+    """Add logging functionality to function|method.
+    
+    Logs the args|kwargs, time duration of execution, and result. The format of
+    the message is:
+
+    .. code-block::
+        
+        function_name(args|kwargs) [0-9*.0-9*s] -> result
+
+    :param level: Log level. Default is DEBUG.
+    """
     def decorator(func: Callable) -> Callable:
         if '.' in func.__qualname__:
             return wrap_method(level, func)

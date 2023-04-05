@@ -46,6 +46,17 @@ def wrap_method(msg: str,
 def log_msg(msg: str | None = None,
             level: int | None = logging.DEBUG,
             ) -> Decorator:
+    """Add logging functionality to function|method.
+    
+    Logs given message. The format of the log message is:
+
+    .. code-block::
+        
+        given_message
+
+    :param msg: Message to log. Default is 'function_name()'.
+    :param level: Log level. Default is DEBUG.
+    """
     def decorator(func: Callable) -> Callable:
         nonlocal msg
         msg = f'{func.__name__}()' if msg is None else msg

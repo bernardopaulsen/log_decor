@@ -48,7 +48,7 @@ def log_msg(msg: str | None = None,
             ) -> Decorator:
     def decorator(func: Callable) -> Callable:
         nonlocal msg
-        msg = msg if msg is not None else f'{func.__name__}()'
+        msg = f'{func.__name__}()' if msg is None else msg
         if '.' in func.__qualname__:
             return wrap_method(msg, level, func)
         return wrap_function(msg, level, func)

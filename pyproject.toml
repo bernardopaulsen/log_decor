@@ -12,8 +12,8 @@ keywords = ["logging", "decorator", "OOP"]
 python = "^3.10"
 
 [tool.poetry.urls]
-"Github" = "https://github.com/bernardopaulsen/log_decor"
-"Read the Docs" = "https://log-decor.readthedocs.io"
+"GitHub" = "https://github.com/bernardopaulsen/log_decor"
+"Documentation" = "https://bernardopaulsen.github.io/log_decor/"
 
 [tool.poetry-dynamic-versioning]
 enable = true

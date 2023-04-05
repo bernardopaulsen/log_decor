@@ -38,8 +38,11 @@ def duration(func: Callable,
 
 def parse(*args, **kwargs) -> str:
     """Parse arguments into a easy-to-read string."""
+    def dict_item_to_str(item: tuple) -> str:
+        key, value = item
+        return f'{str(key)}={str(value)}'
     a = map(str, args)
-    ka = map(lambda k, v: f'{str(k)}={str(v)}', kwargs.items())
+    ka = map(dict_item_to_str, kwargs.items())
     return ', '.join(list(a) + list(ka))
 
 
@@ -50,7 +53,7 @@ def wrap_function(log_level: int,
     def wrapper(*args, **kwargs) -> RetType:
         exec_time, result = duration(func, *args, **kwargs)
         logging.log(level=log_level,
-                    msg=f'{func.__name__}{parse(args, kwargs)} [{exec_time}s] -> {result}')
+                    msg=f'{func.__name__}({parse(*args, **kwargs)}) [{exec_time}s] -> {result}')
         return result
     return wrapper
 
@@ -62,9 +65,9 @@ def wrap_method(log_level: int,
     @functools.wraps(func)
     def wrapper(self: Class,
                 *args, **kwargs) -> RetType:
-        exec_time, result = duration(func, *args, **kwargs)
+        exec_time, result = duration(func, self, *args, **kwargs)
         self.logger.log(level=log_level,
-                        msg=f'{func.__name__}{parse(args, kwargs)} [{exec_time}s] -> {result}')
+                        msg=f'{func.__name__}({parse(*args, **kwargs)}) [{exec_time}s] -> {result}')
         return result
     return wrapper
 
@@ -72,7 +75,7 @@ def wrap_method(log_level: int,
 def log_info(level: int | None = logging.DEBUG
              ) -> Decorator:
     def decorator(func: Callable) -> Callable:
-        if inspect.isfunction(func):
-            return wrap_function(level, func)
-        return wrap_method(level, func)
+        if '.' in func.__qualname__:
+            return wrap_method(level, func)
+        return wrap_function(level, func)
     return decorator

@@ -1,5 +1,4 @@
 import functools
-import inspect
 import logging
 import typing as tp
 
@@ -44,11 +43,13 @@ def wrap_method(msg: str,
     return wrapper
 
 
-def log_msg(msg: str,
+def log_msg(msg: str | None = None,
             level: int | None = logging.DEBUG,
             ) -> Decorator:
     def decorator(func: Callable) -> Callable:
-        if inspect.isfunction(func):
-            return wrap_function(msg, level, func)
-        return wrap_method(msg, level, func)
+        nonlocal msg
+        msg = msg if msg is not None else f'{func.__name__}()'
+        if '.' in func.__qualname__:
+            return wrap_method(msg, level, func)
+        return wrap_function(msg, level, func)
     return decorator

@@ -1,4 +1,4 @@
-name: "Release to Test PyPI"
+name: "Release to PyPI"
 
 on:
   push:

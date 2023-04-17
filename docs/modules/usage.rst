@@ -14,7 +14,12 @@ Add logging functionality to function
     @log_info()
     def f():
         pass
-        
+
+
+>>> logging.basicConfig(level=logging.DEBUG)
+>>> f()
+DEBUG:root:f() [0.0001s] -> None
+
 
 Add logger to class
 -------------------
@@ -51,6 +56,12 @@ Add logging functionality to method
         @log_info()
         def f(self):
             pass
+
+
+>>> logging.basicConfig(level=logging.DEBUG)
+>>> example = Example()
+>>> example.f()
+DEBUG:Example:f() [0.0001s] -> None
 
 
 Define logging configuration

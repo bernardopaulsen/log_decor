@@ -2,10 +2,7 @@ name: "Run Unit Tests"
 
 on:
   push:
-    branches:
-      - main
-    tags:
-      - 'v*'
+
 
 jobs:
   test:

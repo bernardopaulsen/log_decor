@@ -2,8 +2,7 @@ name: mypy
 
 on:
   push:
-    paths:
-      - '*.py'
+
 
 jobs:
   mypy:

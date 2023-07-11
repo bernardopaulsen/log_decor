@@ -1,28 +1,30 @@
+"""Provide decorator that adds logger attribute to class."""
 import functools
 import logging
-import typing as tp
+
+from .type_annotation import (
+    ClassDecorator,
+    ClassWithLogger,
+    UserClass
+)
 
 
 __all__ = ['add_logger']
 
 
-Class = tp.TypeVar('Class')
-
-Decorator = tp.Callable[[Class], tp.Type[Class]]
-
-
 def add_logger(name: str | None = None
-               ) -> Decorator:
+               ) -> ClassDecorator:
     """Add logger to class.
     
     The logger will be saved in an attribute named 'logger'.
 
     :param name: Name of logger. If not given, the name of the class is used.
     """
-    def decorator(cls: Class) -> tp.Type[Class]:
+    def decorator(cls: UserClass) -> ClassWithLogger:
         @functools.wraps(cls, updated=())
         class Wrapper(cls):
-            def __init__(self: tp.Type[Class],
+            """Add logger attribute when initiating class instance."""
+            def __init__(self: ClassWithLogger,
                          *args, **kwargs) -> None:
                 self.logger = logging.getLogger(
                     name if name is not None else cls.__name__

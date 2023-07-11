@@ -1,32 +1,32 @@
+"""Logging decorator that creates a log message by parsing the arguments and the result
+with an user-defined function.
+"""
 import functools
 import logging
 import typing as tp
+
+from .type_annotation import (
+    Callable,
+    ClassWithLogger,
+    Decorator,
+    Function,
+    Method,
+    RetType
+)
 
 
 __all__ = ['log_func']
 
 
-class Class:
-    logger: logging.Logger
-
-
-Param = tp.ParamSpec("Param")
-RetType = tp.TypeVar("RetType")
-
-Function = tp.Callable[Param, RetType]
-Method = tp.Callable[tp.Concatenate[tp.Type[Class], Param], RetType]
-
-Callable = Function | Method
-Decorator = tp.Callable[[Callable], Callable]
-
 FormatFunc = tp.Callable[..., str]
 
 
-def wrap_function(msg: str,
-                  log_level: int,
-                  arg_func: FormatFunc,
-                  res_func: FormatFunc,
-                  func: Function) -> Function:
+def _wrap_function(msg: str,
+                   log_level: int,
+                   arg_func: FormatFunc,
+                   res_func: FormatFunc,
+                   func: Function) -> Function:
+    """Add logging functionality to method."""
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> RetType:
         result = func(*args, **kwargs)
@@ -38,13 +38,14 @@ def wrap_function(msg: str,
     return wrapper
 
 
-def wrap_method(msg: str,
-                log_level: int,
-                arg_func: FormatFunc,
-                res_func: FormatFunc,
-                func: Method) -> Method:
+def _wrap_method(msg: str,
+                 log_level: int,
+                 arg_func: FormatFunc,
+                 res_func: FormatFunc,
+                 func: Method) -> Method:
+    """Add logging functionality to method."""
     @functools.wraps(func)
-    def wrapper(self: Class,
+    def wrapper(self: ClassWithLogger,
                 *args, **kwargs) -> RetType:
         result = func(self, *args, **kwargs)
         self.logger.log(
@@ -53,10 +54,6 @@ def wrap_method(msg: str,
         )
         return result
     return wrapper
-
-
-def none_func(*args, **kwargs):
-    return str()
 
 
 def log_func(msg: str | None = None,
@@ -81,12 +78,12 @@ def log_func(msg: str | None = None,
     :param res_func: Function to apply to result. If not given, a function that
         returns an empty string is used.
     """
-    arg_func = none_func if arg_func is None else arg_func
-    res_func = none_func if res_func is None else res_func
+    arg_func = str if arg_func is None else arg_func
+    res_func = str if res_func is None else res_func
     def decorator(func: Callable) -> Callable:
         nonlocal msg
         msg = func.__name__ if msg is None else msg
         if '.' in func.__qualname__:
-            return wrap_method(msg, level, arg_func, res_func, func)
-        return wrap_function(msg, level, arg_func, res_func, func)
+            return _wrap_method(msg, level, arg_func, res_func, func)
+        return _wrap_function(msg, level, arg_func, res_func, func)
     return decorator

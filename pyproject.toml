@@ -23,3 +23,48 @@ format = '{base}'
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
+
+
+[tool.pylint.main]
+fail-under = 10
+ignore = [".venv", "venv", "docs"]
+
+[tool.pylint.basic]
+argument-naming-style = "snake_case"
+attr-naming-style = "snake_case"
+class-attribute-naming-style = "snake_case"
+class-const-naming-style = "UPPER_CASE"
+class-naming-style = "PascalCase"
+const-naming-style = "UPPER_CASE"
+docstring-min-length = -1 # Minimum line length for functions/classes that require docstrings
+function-naming-style = "snake_case"
+method-naming-style = "snake_case"
+module-naming-style = "snake_case"
+no-docstring-rgx = "^_"
+variable-naming-style = "snake_case"
+
+[tool.pylint.classes]
+valid-classmethod-first-arg = ["cls"]
+valid-metaclass-classmethod-first-arg = ["mcs"]
+
+[tool.pylint.design]
+max-statements = 50 # Maximum number of statements in function / method body.
+min-public-methods = 0
+
+[tool.pylint.format]
+indent-after-paren = 4 # Number of spaces of indent required inside a hanging or continued line.
+max-line-length = 88
+max-module-lines = 1000
+
+[tool.pylint.refactoring]
+max-nested-blocks = 5
+
+[tool.pylint.reports]
+output-format = "json"
+score = true
+
+[tool.pylint.similarities]
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true
+ignore-signatures = true

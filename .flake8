@@ -1,0 +1,29 @@
+[flake8]
+max-line-length = 88
+exclude = 
+    # Virtual environments
+    .venv,
+    venv,
+    # Sphinx configuration file
+    docs
+extend-ignore =
+    # Whitespace before colon in slices
+    # E203,
+    # Line too long
+    E501,
+    # Missing docstring in public module
+    D105
+docstring-convention = restructuredtext
+per-file-ignores =
+    # Ignore docstrings in tests
+    tests/*:
+        # Missing docstring in public class
+        D100,
+        # Missing docstring in public method
+        D101,
+        # Missing docstring in public function
+        D102,
+        # Missing docstring in public module-level variable
+        D103
+max-complexity = 10
+doctests = True

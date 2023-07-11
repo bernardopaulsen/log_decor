@@ -1,0 +1,25 @@
+{
+    "recommendations": [
+    // A Visual Studio Code extension with rich support for the Python language
+    // (for all actively supported versions of the language: >=3.7), including
+    // features such as IntelliSense (Pylance), linting, debugging, code navigation,
+    // code formatting, refactoring, variable explorer, test explorer, and more!
+    "ms-python.python",
+    // A Visual Studio Code extension with support for the pylint linter.
+    "ms-python.pylint",
+    // View a Git Graph of your repository, and easily perform Git actions from the
+    // graph.
+    "mhutchie.git-graph",
+    // This extension quickly searches your workspace for comment tags like TODO
+    // and FIXME, and displays them in a tree view in the activity bar.
+    "Gruntfuggly.todo-tree",
+    // This extension provides rich reStructuredText language support for VS Code.
+    "lextudio.restructuredtext",
+    // Visual Studio Code extension to quickly generate docstrings for python
+    // functions.
+    "njpwerner.autodocstring",
+    // This extension helps you to fill in commit message according to
+    // Conventional Commits.
+    "vivaxy.vscode-conventional-commits",
+    ]
+}

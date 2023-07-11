@@ -3,13 +3,14 @@ import logging
 import typing as tp
 
 
-UserClass = tp.TypeVar('UserClass')
+UserClass = tp.TypeVar("UserClass")
 
 ClassDecorator = tp.Callable[[UserClass], tp.Type[UserClass]]
 
 
 class ClassWithLogger(UserClass):
     """Type annotation of a class with logger attribute."""
+
     logger: logging.Logger
 
 
